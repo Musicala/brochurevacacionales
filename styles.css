@@ -1,0 +1,848 @@
+/* ===========================
+   Musicala Brochure UI
+   styles.css (completo y mejorado)
+   =========================== */
+
+/* ---------------------------
+   RESET / VARIABLES
+---------------------------- */
+:root {
+  --azul-mozart: #0C41C4;
+  --violeta-beethoven: #680DBF;
+  --magenta-brahms: #CE0071;
+  --azul-bach: #220A63;
+
+  --azul-wagner: #0C0A1E;
+  --gris-tchaikovsky: #232323;
+  --gris-haydn: #E6E8E8;
+  --blanco-debussy: #F9F9F9;
+
+  --panel: #ffffff;
+  --panel-soft: rgba(249, 249, 249, 0.92);
+
+  --text: var(--gris-tchaikovsky);
+  --muted: rgba(35, 35, 35, 0.72);
+  --line: rgba(12, 10, 30, 0.08);
+
+  --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 26px rgba(0, 0, 0, 0.08);
+  --shadow-accent: 0 14px 32px rgba(12, 65, 196, 0.14);
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --pad-lg: 2rem;
+  --pad-md: 1.5rem;
+  --pad-sm: 1rem;
+
+  --focus: rgba(12, 65, 196, 0.35);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(900px 550px at 10% -5%, rgba(12, 65, 196, 0.10), transparent 60%),
+    radial-gradient(900px 550px at 90% 0%, rgba(206, 0, 113, 0.08), transparent 60%),
+    radial-gradient(900px 550px at 60% 110%, rgba(104, 13, 191, 0.08), transparent 60%),
+    var(--blanco-debussy);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Mejor selección */
+::selection {
+  background: rgba(12, 65, 196, 0.18);
+}
+
+/* ---------------------------
+   ACCESIBILIDAD BÁSICA
+---------------------------- */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Links genéricos */
+a {
+  color: var(--azul-mozart);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--magenta-brahms);
+  text-decoration: underline;
+}
+a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ---------------------------
+   ENCABEZADO
+---------------------------- */
+.site-header {
+  background: linear-gradient(
+    90deg,
+    var(--azul-mozart),
+    var(--violeta-beethoven),
+    var(--magenta-brahms)
+  );
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 10px 24px rgba(12, 10, 30, 0.14);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.logo img {
+  height: 56px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
+}
+
+/* ---------------------------
+   LAYOUT GENERAL
+---------------------------- */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* ---------------------------
+   HERO PORTAL (Portada)
+   - izquierda: título + imagen general
+   - derecha: menú de secciones
+---------------------------- */
+.hero-portal {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin: 1.1rem 0 1.3rem;
+}
+
+.hero-portal__left {
+  background: var(--panel);
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.35rem 1.15rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-portal__left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 7px;
+  background: linear-gradient(
+    90deg,
+    var(--azul-mozart),
+    var(--violeta-beethoven),
+    var(--magenta-brahms)
+  );
+  opacity: 0.95;
+}
+
+.hero-portal__left h1 {
+  margin: 0.8rem 0 0.85rem;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--azul-bach);
+  letter-spacing: -0.02em;
+}
+
+.hero-portal__right {
+  position: sticky;
+  top: 92px; /* debajo del header sticky */
+  background: var(--panel);
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.05rem 1.05rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------------------------
+   IMAGEN GENERAL DEL HOME
+---------------------------- */
+.hero-image {
+  margin: 0.25rem 0 0.15rem;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(12, 10, 30, 0.06);
+}
+
+/* ---------------------------
+   MENÚ DE SECCIONES (cards)
+---------------------------- */
+.cards-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  color: var(--azul-bach);
+  letter-spacing: -0.01em;
+}
+
+.cards-subtitle {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.cards-menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.cards-menu__item {
+  width: 100%;
+  border-radius: 16px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(12, 10, 30, 0.08);
+  background: #ffffff;
+  text-align: left;
+  font-size: 0.92rem;
+  cursor: pointer;
+  color: var(--azul-wagner);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.035);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.cards-menu__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.07);
+  border-color: rgba(12, 65, 196, 0.35);
+}
+
+.cards-menu__item.is-active {
+  background: linear-gradient(
+    120deg,
+    rgba(12, 65, 196, 0.09),
+    rgba(104, 13, 191, 0.09)
+  );
+  border-color: rgba(12, 65, 196, 0.55);
+  color: var(--azul-bach);
+  box-shadow: var(--shadow-accent);
+}
+
+/* ---------------------------
+   CONTENIDO (SOLO UNA SECCIÓN VISIBLE)
+---------------------------- */
+.content-section {
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 1.6rem 1.5rem 1.9rem;
+  margin: 0 0 1.3rem;
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  display: none; /* oculto por defecto */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+}
+
+.content-section.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pequeña banda superior para secciones (look brochure) */
+.content-section::before {
+  content: "";
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  margin: -0.35rem 0 1.05rem;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 65, 196, 0.55),
+    rgba(104, 13, 191, 0.55),
+    rgba(206, 0, 113, 0.55)
+  );
+}
+
+/* ---------------------------
+   TIPOGRAFÍA
+---------------------------- */
+h1, h2, h3, h4 {
+  color: var(--azul-bach);
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: 1.12rem;
+  margin: 1.1rem 0 0.55rem;
+}
+
+h4 {
+  font-size: 1rem;
+  margin: 0.95rem 0 0.4rem;
+}
+
+p {
+  margin: 0 0 0.75rem;
+  color: rgba(35,35,35,0.92);
+}
+
+strong {
+  font-weight: 650;
+}
+
+ul {
+  padding-left: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+ul li {
+  margin-bottom: 0.28rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.2rem 0;
+}
+
+/* ---------------------------
+   BROCHURE: BLOQUES VISUALES
+   (para meter imágenes + copy de venta)
+---------------------------- */
+.brochure-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.2rem;
+  align-items: center;
+  margin: 0.6rem 0 1.15rem;
+}
+
+.brochure-hero__copy p {
+  color: rgba(35,35,35,0.86);
+  font-size: 0.98rem;
+}
+
+.brochure-hero__media {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.brochure-hero__media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tarjetas de highlights */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.05rem 0 0.5rem;
+}
+
+.highlight {
+  background: rgba(12, 65, 196, 0.05);
+  border: 1px solid rgba(12, 65, 196, 0.12);
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+}
+
+.highlight .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--azul-bach);
+  font-size: 0.95rem;
+}
+
+.highlight p {
+  margin: 0.45rem 0 0;
+  color: rgba(35,35,35,0.86);
+  font-size: 0.92rem;
+}
+
+/* CTA */
+.cta-box {
+  margin-top: 1.1rem;
+  background: linear-gradient(
+    120deg,
+    rgba(12, 65, 196, 0.08),
+    rgba(104, 13, 191, 0.08),
+    rgba(206, 0, 113, 0.07)
+  );
+  border: 1px solid rgba(12, 65, 196, 0.16);
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cta-box .cta-title {
+  font-weight: 800;
+  color: var(--azul-bach);
+  letter-spacing: -0.01em;
+}
+
+.cta-box .cta-sub {
+  color: rgba(35,35,35,0.82);
+  font-size: 0.92rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid rgba(12, 10, 30, 0.10);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--azul-wagner);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border-color: rgba(12, 65, 196, 0.35);
+}
+
+.btn.primary {
+  background: var(--azul-mozart);
+  color: #fff;
+  border-color: rgba(12, 65, 196, 0.55);
+}
+
+.btn.primary:hover {
+  box-shadow: 0 14px 26px rgba(12, 65, 196, 0.22);
+}
+
+/* ---------------------------
+   BLOQUES CON IMAGEN (corporales/música/artes)
+---------------------------- */
+.track-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 1.1rem;
+  align-items: start;
+  margin: 1rem 0 0.25rem;
+}
+
+.track-media {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.track-media img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.track-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(12, 65, 196, 0.08);
+  border: 1px solid rgba(12, 65, 196, 0.18);
+  color: var(--azul-bach);
+  margin-bottom: 0.55rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------------------------
+   SECCIÓN DESTACADA: ¿QUÉ HACEMOS?
+---------------------------- */
+.content-section--featured {
+  border-radius: 18px;
+  padding: 2rem 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(12, 65, 196, 0.14);
+}
+
+.content-section--featured::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(206, 0, 113, 0.16), transparent 60%);
+  pointer-events: none;
+}
+
+/* Lista estilizada para la sección semanal */
+.lista-semanal {
+  margin: 1rem 0 0.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.lista-semanal li {
+  background: rgba(12, 65, 196, 0.06);
+  border-left: 4px solid var(--azul-mozart);
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 0.55rem;
+  border-radius: 10px;
+  color: var(--azul-bach);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.lista-semanal li:hover {
+  background: rgba(104, 13, 191, 0.09);
+  transform: translateX(4px);
+}
+
+.lista-semanal li::before {
+  content: "🎨";
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ---------------------------
+   CRONOGRAMA: TABS + ACORDEÓN
+---------------------------- */
+.schedule-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.4rem 0 1rem;
+}
+
+.schedule-tab {
+  border-radius: 999px;
+  border: 1px solid rgba(12, 10, 30, 0.10);
+  padding: 0.5rem 0.95rem;
+  background: #ffffff;
+  font-size: 0.92rem;
+  cursor: pointer;
+  color: var(--azul-wagner);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease,
+    border-color 0.15s ease;
+}
+
+.schedule-tab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-tab.is-active {
+  background: linear-gradient(
+    120deg,
+    rgba(12, 65, 196, 0.12),
+    rgba(104, 13, 191, 0.12)
+  );
+  border-color: rgba(12, 65, 196, 0.55);
+  color: var(--azul-bach);
+}
+
+/* Paneles de semanas */
+.schedule-weeks {
+  margin-top: 0.5rem;
+}
+
+.week-panel {
+  display: none;
+}
+
+.week-panel.is-active {
+  display: block;
+}
+
+/* Days grid (tarjetas por día) */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.35rem;
+}
+
+.day-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(12, 65, 196, 0.10);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
+.day-card h4 {
+  margin-bottom: 0.35rem;
+  color: var(--azul-bach);
+}
+
+.day-hours {
+  margin-top: 0.55rem;
+  padding-left: 1rem;
+  font-size: 0.92rem;
+}
+
+.day-hours li {
+  margin-bottom: 0.22rem;
+}
+
+/* Acordeón */
+.schedule-accordion {
+  margin-top: 0.95rem;
+  border-radius: 14px;
+  border: 1px solid rgba(12, 10, 30, 0.08);
+  background: var(--panel-soft);
+  padding: 0.45rem;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.05);
+}
+
+.activity-toggle {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: var(--azul-bach);
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.activity-toggle:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+.activity-toggle:focus-visible {
+  outline: 3px solid rgba(206, 0, 113, 0.25);
+  outline-offset: 3px;
+}
+
+.activity-toggle::after {
+  content: "▾";
+  font-size: 0.78rem;
+  opacity: 0.85;
+  transition: transform 0.15s ease;
+}
+
+.activity-toggle.is-open::after {
+  transform: rotate(180deg);
+}
+
+.activity-title {
+  font-weight: 800;
+}
+
+.activity-tag {
+  font-size: 0.8rem;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(12, 65, 196, 0.20);
+  color: var(--azul-mozart);
+  white-space: nowrap;
+}
+
+/* Contenido del acordeón */
+.activity-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 0.9rem;
+  transition:
+    max-height 0.22s ease,
+    padding-top 0.18s ease,
+    padding-bottom 0.18s ease;
+}
+
+.activity-content.is-open {
+  padding-top: 0.2rem;
+  padding-bottom: 0.7rem;
+}
+
+.activity-content ul {
+  margin-top: 0.45rem;
+}
+
+.activity-content p {
+  margin-top: 0.45rem;
+}
+
+/* ---------------------------
+   IMÁGENES INLINE
+   (para las secciones que incluyan corporal.png / musica.png / artes.png)
+---------------------------- */
+.section-figure {
+  margin: 0.6rem 0 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(12, 10, 30, 0.06);
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.section-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-figure figcaption {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+  color: rgba(35,35,35,0.72);
+  border-top: 1px solid rgba(12, 10, 30, 0.06);
+}
+
+/* ---------------------------
+   FOOTER
+---------------------------- */
+.site-footer {
+  background: var(--azul-wagner);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------
+   RESPONSIVE
+---------------------------- */
+@media (max-width: 980px) {
+  .hero-portal {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-portal__right {
+    position: static;
+  }
+
+  .cards-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .track-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .track-media img {
+    height: 260px;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .brochure-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .brochure-hero__media img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 1.15rem 1rem 2.5rem;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .cards-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .content-section {
+    padding: 1.3rem 1.15rem 1.55rem;
+  }
+
+  .hero-portal__left {
+    padding: 1.15rem 1.1rem 1.05rem;
+  }
+}
