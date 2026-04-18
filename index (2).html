@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talleres Vacacionales Musicala 2026 – Vacaciones artísticas con propósito</title>
+<meta name="description" content="Talleres Vacacionales Musicala 2026. Junio y julio de 2026. Música, danza, teatro y artes plásticas para niños en Bogotá.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg2: #F6F2FF;
+    --deep: #231942;
+    --coral: #6C3BFF;
+    --gold: #FF4FB3;
+    --teal: #3D8BFF;
+    --teal-light: #6DA8FF;
+    --cream: #FFFFFF;
+    --text: #2A2340;
+    --text-muted: #6E6785;
+    --border: #E6DEFF;
+    --white: #FFFFFF;
+    --shadow: 0 8px 28px rgba(108,59,255,0.10);
+    --shadow-lg: 0 18px 52px rgba(108,59,255,0.16);
+    --r: 18px;
+    --r-sm: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem,4vw,3rem);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; height: 60px;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Outfit', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--deep); text-decoration: none;
+  }
+
+  .nav-brand img { height: 36px; width: auto; }
+
+  .nav-links {
+    display: flex; gap: 0.25rem; align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--text-muted); text-decoration: none;
+    padding: 6px 12px; border-radius: 20px;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--coral); background: rgba(212,83,58,0.08); }
+
+  .nav-cta {
+    background: var(--coral) !important;
+    color: var(--white) !important;
+    font-weight: 600 !important;
+  }
+
+  .nav-cta:hover { background: #C04430 !important; }
+
+  /* ─── HERO ────────────────────────────────── */
+  .hero {
+    min-height: 100svh;
+    display: grid; align-items: center;
+    padding: clamp(3rem,8vw,6rem) clamp(1rem,4vw,3rem) clamp(2rem,5vw,4rem);
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 20%, rgba(233,162,59,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 5% 80%, rgba(42,123,111,0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(212,83,58,0.06) 0%, transparent 60%),
+      var(--bg);
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(212,83,58,0.06) 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(42,123,111,0.08) 1px, transparent 1px);
+    background-size: 60px 60px, 90px 90px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(42,123,111,0.1); border: 1px solid rgba(42,123,111,0.25);
+    color: var(--teal); border-radius: 20px;
+    padding: 6px 14px; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Outfit', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--deep);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic; color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--text-muted); margin-top: 1.25rem; max-width: 520px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-date-card {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--deep); color: var(--white);
+    border-radius: var(--r); padding: 14px 22px;
+    margin-top: 1.75rem; font-size: 0.9rem; font-weight: 500;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-date-card .date-icon {
+    font-size: 1.3rem;
+    background: var(--coral); border-radius: 8px;
+    width: 40px; height: 40px; display: grid; place-items: center;
+  }
+
+  .hero-date-text strong {
+    display: block; font-size: 1.1rem; font-weight: 700;
+    font-family: 'Outfit', serif;
+  }
+
+  .hero-date-text span { font-size: 0.78rem; opacity: 0.65; }
+
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 1.75rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+
+  .btn-primary {
+    background: var(--coral); color: var(--white);
+    box-shadow: 0 4px 16px rgba(212,83,58,0.35);
+  }
+
+  .btn-primary:hover { background: #C04430; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,83,58,0.45); }
+
+  .btn-outline {
+    background: transparent; color: var(--deep);
+    border: 1.5px solid var(--border);
+  }
+
+  .btn-outline:hover { border-color: var(--deep); background: rgba(28,25,23,0.04); }
+
+  /* Hero visual cards */
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .art-card {
+    border-radius: var(--r);
+    overflow: hidden; position: relative;
+    aspect-ratio: 3/4;
+    background: var(--bg2);
+  }
+
+  .art-card:nth-child(2) { margin-top: 28px; }
+  .art-card:nth-child(3) { margin-top: -28px; }
+
+  .art-card img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .art-card:hover img { transform: scale(1.04); }
+
+  .art-card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(28,25,23,0.85), transparent);
+    padding: 32px 14px 14px;
+    color: var(--white); font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* ─── SECTION BASE ────────────────────────── */
+  section { padding: clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem); }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .eyebrow::before {
+    content: ''; display: block;
+    width: 24px; height: 2px; background: var(--coral);
+    border-radius: 2px;
+  }
+
+  h2 {
+    font-family: 'Outfit', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--deep); line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 em { font-style: italic; color: var(--coral); }
+
+  .section-lead {
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    color: var(--text-muted); max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ─── WHY CARDS ───────────────────────────── */
+  .why-section { background: var(--deep); color: var(--white); }
+
+  .why-section .eyebrow { color: var(--gold); }
+  .why-section .eyebrow::before { background: var(--gold); }
+  .why-section h2 { color: var(--white); }
+  .why-section h2 em { color: var(--gold); }
+  .why-section .section-lead { color: rgba(255,255,255,0.6); }
+
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+
+  .why-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--r); padding: 2rem;
+    transition: all 0.25s;
+  }
+
+  .why-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: grid; place-items: center; font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .why-icon.coral { background: rgba(212,83,58,0.25); }
+  .why-icon.gold { background: rgba(233,162,59,0.25); }
+  .why-icon.teal { background: rgba(42,123,111,0.25); }
+
+  .why-card h3 {
+    font-family: 'Outfit', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.6rem;
+  }
+
+  .why-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* ─── DISCIPLINES ─────────────────────────── */
+  .disciplines-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+  }
+
+  .disc-card {
+    border-radius: var(--r); overflow: hidden;
+    position: relative; min-height: 360px;
+    cursor: default;
+  }
+
+  .disc-card img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .disc-card:hover img { transform: scale(1.05); }
+
+  .disc-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, transparent 30%, rgba(28,25,23,0.85) 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2rem;
+  }
+
+  .disc-num {
+    font-family: 'Outfit', serif;
+    font-size: 0.85rem; color: rgba(255,255,255,0.5);
+    margin-bottom: 0.4rem;
+  }
+
+  .disc-card h3 {
+    font-family: 'Outfit', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.6rem;
+  }
+
+  .disc-card p { font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  .disc-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem;
+  }
+
+  .disc-tag {
+    font-size: 0.7rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 20px;
+    background: rgba(255,255,255,0.15); color: var(--white);
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── DATES / TIMELINE ────────────────────── */
+  .dates-section {
+    background: linear-gradient(135deg, #F7F2FF 0%, #EEF4FF 100%);
+    border-radius: var(--r); overflow: hidden;
+  }
+
+  .dates-split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; align-items: stretch;
+  }
+
+  .dates-left {
+    padding: clamp(2rem,5vw,4rem);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .dates-right {
+    background: var(--teal); color: var(--white);
+    padding: clamp(2rem,5vw,4rem);
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .dates-right h3 {
+    font-family: 'Outfit', serif;
+    font-size: 1.5rem; font-weight: 600; margin-bottom: 0.25rem;
+  }
+
+  .dates-right p { font-size: 0.88rem; opacity: 0.75; line-height: 1.6; }
+
+  .week-pill {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--r-sm); padding: 10px 16px;
+  }
+
+  .week-num {
+    font-family: 'Outfit', serif;
+    font-size: 1.8rem; font-weight: 700; line-height: 1;
+    color: var(--gold);
+  }
+
+  .week-info { font-size: 0.82rem; opacity: 0.85; }
+  .week-info strong { display: block; font-size: 0.9rem; }
+
+  .big-date {
+    font-family: 'Outfit', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700; line-height: 1; color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .big-date em { font-style: italic; color: var(--coral); }
+
+  /* ─── ACCORDION ───────────────────────────── */
+  .accordion-section { background: var(--white); border-radius: var(--r); padding: 0 !important; overflow: hidden; }
+
+  .accordion-group { border-bottom: 1px solid var(--border); }
+  .accordion-group:last-child { border-bottom: none; }
+
+  .accordion-trigger {
+    width: 100%; background: none; border: none;
+    padding: 1.4rem 2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    text-align: left; transition: background 0.2s;
+  }
+
+  .accordion-trigger:hover { background: var(--bg); }
+
+  .accordion-trigger.open { background: var(--bg); }
+
+  .acc-left { display: flex; align-items: center; gap: 14px; }
+
+  .acc-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: grid; place-items: center; font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .acc-icon.coral { background: rgba(212,83,58,0.1); }
+  .acc-icon.gold { background: rgba(233,162,59,0.12); }
+  .acc-icon.teal { background: rgba(42,123,111,0.1); }
+  .acc-icon.deep { background: rgba(28,25,23,0.07); }
+  .acc-icon.purple { background: rgba(120,80,180,0.1); }
+
+  .acc-title {
+    font-family: 'Outfit', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--deep);
+  }
+
+  .acc-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+  .acc-arrow {
+    font-size: 1rem; color: var(--text-muted);
+    transition: transform 0.3s; flex-shrink: 0;
+  }
+
+  .accordion-trigger.open .acc-arrow { transform: rotate(180deg); }
+
+  .accordion-body {
+    display: none; padding: 0 2rem 2rem;
+  }
+
+  .accordion-body.open { display: block; animation: slideDown 0.3s ease; }
+
+  .acc-content-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem; margin-top: 0.5rem;
+  }
+
+  .acc-col h4 {
+    font-family: 'Outfit', serif;
+    font-size: 1rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .acc-list { list-style: none; }
+  .acc-list li {
+    font-size: 0.86rem; color: var(--text-muted);
+    padding: 0.35rem 0; display: flex; gap: 8px;
+  }
+
+  .acc-list li::before {
+    content: '◆'; font-size: 0.45rem; color: var(--coral);
+    margin-top: 7px; flex-shrink: 0;
+  }
+
+  .acc-summary {
+    font-size: 0.9rem; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 1.25rem;
+  }
+
+  .acc-highlight {
+    background: linear-gradient(135deg, rgba(212,83,58,0.07), rgba(233,162,59,0.07));
+    border-left: 3px solid var(--coral);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    padding: 1rem 1.25rem; font-size: 0.88rem;
+    color: var(--text); margin-top: 0.75rem;
+  }
+
+  /* ─── SCHEDULE ────────────────────────────── */
+  .schedule-tabs {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 8px 18px; border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--white); color: var(--text-muted);
+    font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .tab-btn:hover { border-color: var(--coral); color: var(--coral); }
+  .tab-btn.active { background: var(--coral); border-color: var(--coral); color: var(--white); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+  .week-header {
+    background: var(--deep); color: var(--white);
+    border-radius: var(--r) var(--r) 0 0;
+    padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .week-header h3 {
+    font-family: 'Outfit', serif;
+    font-size: 1.5rem; font-weight: 600;
+  }
+
+  .week-header p { font-size: 0.83rem; opacity: 0.6; margin-top: 4px; }
+
+  .week-badge {
+    background: var(--coral); border-radius: 8px;
+    padding: 8px 14px; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .days-row {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    background: var(--bg2); border-radius: 0 0 var(--r) var(--r);
+    overflow: hidden;
+  }
+
+  .day-col {
+    padding: 1.25rem 1rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .day-col:last-child { border-right: none; }
+
+  .day-num {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
+  }
+
+  .day-focus {
+    font-family: 'Outfit', serif;
+    font-size: 1rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.75rem;
+  }
+
+  .day-item {
+    font-size: 0.75rem; color: var(--text-muted);
+    padding: 4px 8px; margin-bottom: 4px; border-radius: 6px;
+    background: rgba(28,25,23,0.04); line-height: 1.4;
+  }
+
+  .day-item.music { background: rgba(233,162,59,0.12); color: #7A5A00; }
+  .day-item.corp { background: rgba(42,123,111,0.1); color: #1A5A52; }
+  .day-item.arts { background: rgba(212,83,58,0.1); color: #8A2818; }
+  .day-item.rest { background: rgba(28,25,23,0.05); }
+
+  .week-result {
+    background: var(--teal); color: var(--white);
+    border-radius: var(--r-sm); padding: 1rem 1.5rem;
+    margin-top: 1rem; display: flex; align-items: center; gap: 12px;
+    font-size: 0.88rem;
+  }
+
+  .week-result strong { font-size: 1rem; }
+
+  /* ─── FAMILIES ────────────────────────────── */
+  .fam-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem; margin-top: 1rem;
+  }
+
+  .fam-card {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r); padding: 1.75rem;
+    transition: all 0.2s;
+  }
+
+  .fam-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+
+  .fam-card .icon {
+    font-size: 1.75rem; margin-bottom: 1rem;
+  }
+
+  .fam-card h4 {
+    font-family: 'Outfit', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .fam-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* ─── CTA FINAL ───────────────────────────── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--coral) 0%, #8A63FF 100%);
+    color: var(--white); text-align: center;
+    border-radius: var(--r); overflow: hidden;
+    position: relative;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(255,255,255,0.12), transparent);
+    pointer-events: none;
+  }
+
+  .cta-section .eyebrow { color: rgba(255,255,255,0.6); justify-content: center; }
+  .cta-section .eyebrow::before { background: rgba(255,255,255,0.4); }
+  .cta-section h2 { color: var(--white); font-size: clamp(2rem,5vw,3.5rem); }
+  .cta-section h2 em { color: var(--gold); }
+  .cta-section p { color: rgba(255,255,255,0.75); max-width: 520px; margin: 0.75rem auto 0; }
+
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 2rem; }
+
+  .btn-white {
+    background: var(--white); color: var(--coral);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .btn-white:hover { background: #FFF3EE; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.15);
+    color: var(--white); border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 0.8rem; color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── NOTAS ───────────────────────────────── */
+  .notes-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .note-pill {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--r-sm); padding: 0.9rem 1rem;
+    font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;
+  }
+
+  .note-pill span:first-child { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── FEST ────────────────────────────────── */
+  .fest-card {
+    background: linear-gradient(135deg, #231942 60%, #352B68);
+    border-radius: var(--r); padding: 2.5rem;
+    display: flex; align-items: center; gap: 2rem;
+    color: var(--white); flex-wrap: wrap;
+  }
+
+  .fest-card .fest-badge {
+    background: var(--gold); color: var(--deep);
+    border-radius: var(--r-sm); padding: 10px 16px;
+    font-size: 0.72rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .fest-card h3 {
+    font-family: 'Outfit', serif;
+    font-size: 1.5rem; font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .fest-card p { font-size: 0.88rem; opacity: 0.65; }
+
+  .fest-card .ml-auto { margin-left: auto; }
+
+  /* ─── DAILY SCHEDULE VISUAL ───────────────── */
+  .daily-blocks {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 0.75rem 0;
+  }
+
+  .db { display: flex; align-items: center; gap: 10px; }
+  .db-time {
+    font-size: 0.7rem; color: var(--text-muted);
+    width: 45px; text-align: right; flex-shrink: 0;
+  }
+
+  .db-bar {
+    flex: 1; border-radius: 6px; padding: 7px 12px;
+    font-size: 0.8rem; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .db-arts { background: rgba(212,83,58,0.12); color: var(--coral); }
+  .db-corp { background: rgba(42,123,111,0.12); color: var(--teal); }
+  .db-music { background: rgba(233,162,59,0.15); color: #9A6800; }
+  .db-onces { background: rgba(28,25,23,0.05); color: var(--text-muted); }
+  .db-ludico { background: rgba(120,80,180,0.1); color: #6B4BA8; }
+
+  /* ─── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { max-width: 420px; }
+    .disciplines-grid { grid-template-columns: 1fr; }
+    .dates-split { grid-template-columns: 1fr; }
+    .days-row { grid-template-columns: 1fr 1fr; }
+    .day-col:nth-child(5) { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .accordion-trigger { padding: 1.2rem; }
+    .accordion-body { padding: 0 1.2rem 1.5rem; }
+    .week-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .days-row { grid-template-columns: 1fr; }
+    .fest-card { flex-direction: column; }
+    .fest-card .ml-auto { margin-left: 0; }
+  }
+</style>
+</head>
+<body id="inicio">
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-brand">
+    <img src="https://static.wixstatic.com/media/cec856_4ce30d08911b4aa6b21816b9d18a1ac1~mv2.png/v1/fill/w_233,h_167,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/LOGO-01.png" alt="Musicala" onerror="this.style.display='none'">
+    Musicala
+  </a>
+  <ul class="nav-links">
+    <li><a href="#presentacion">Presentación</a></li>
+    <li><a href="#disciplinas">Disciplinas</a></li>
+    <li><a href="#fechas">Fechas</a></li>
+    <li><a href="#cronograma">Cronograma</a></li>
+    <li><a href="#familias">Familias</a></li>
+    <li><a href="https://wa.me/573193529475" class="btn nav-cta" target="_blank">Inscribirme</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">✨ Temporada 2026 abierta</div>
+      <h1 class="hero-title">
+        Vacaciones<br>
+        <em>artísticas</em><br>
+        con propósito
+      </h1>
+      <p class="hero-sub">
+        Una experiencia integral para niños y jóvenes de <strong>4 a 15 años</strong>, con <strong>música</strong>, <strong>baile, teatro y expresión corporal</strong> y <strong>manualidades</strong> en un ambiente creativo, seguro y lleno de propósito.
+      </p>
+      <div class="hero-date-card">
+        <div class="date-icon">📅</div>
+        <div class="hero-date-text">
+          <strong>Junio y julio de 2026</strong>
+          <span>Talleres Vacacionales Musicala · 2026</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="https://wa.me/573193529475" class="btn btn-primary" target="_blank">
+          💬 Inscribirme por WhatsApp
+        </a>
+        <a href="#presentacion" class="btn btn-outline">
+          Conocer más ↓
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="art-card">
+        <img src="https://static.wixstatic.com/media/85afce_eeda9f7daeb94b2c88e8213c3bfb7225~mv2.jpg/v1/fill/w_361,h_310,q_90,enc_avif,quality_auto/85afce_eeda9f7daeb94b2c88e8213c3bfb7225~mv2.jpg" alt="Danza y teatro">
+        <div class="art-card-label">Danza · Teatro</div>
+      </div>
+      <div class="art-card">
+        <img src="https://static.wixstatic.com/media/85afce_89a140809af24c288e42753c9d8bf363~mv2.jpeg/v1/fill/w_674,h_422,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Taller%20de%20M%C3%BAsica%201.jpeg" alt="Música">
+        <div class="art-card-label">Música</div>
+      </div>
+      <div class="art-card">
+        <img src="https://static.wixstatic.com/media/85afce_266e46e269ca4714aa95bccb67976e69~mv2.jpg/v1/fill/w_674,h_422,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_20241126_100541.jpg" alt="Artes plásticas">
+        <div class="art-card-label">Artes Plásticas</div>
+      </div>
+      <div class="art-card">
+        <img src="https://static.wixstatic.com/media/85afce_a4cba9f80fb64bb78934335bd3693aa9~mv2.gif/v1/fill/w_913,h_686,al_c,usm_0.66_1.00_0.01,pstr/85afce_a4cba9f80fb64bb78934335bd3693aa9~mv2.gif" alt="Experiencia general">
+        <div class="art-card-label">Experiencia integral</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="presentacion">
+  <div class="section-inner">
+    <div class="eyebrow">Por qué Musicala</div>
+    <h2>Arte que deja <em>huella</em> real</h2>
+    <p class="section-lead">No es entretenimiento: es aprendizaje creativo con acompañamiento humano, sensible y profesional.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon coral">🎯</div>
+        <h3>Semanas independientes</h3>
+        <p>Cada semana es un ciclo completo — inicio, desarrollo y cierre. Tu hijo/a puede venir una semana o varias sin perder el hilo.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon gold">🎭</div>
+        <h3>3 lenguajes artísticos al día</h3>
+        <p>Música, exploración corporal y artes plásticas, más actividades lúdicas. Un día completo de creación con propósito.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon teal">📚</div>
+        <h3>Enfoque pedagógico real</h3>
+        <p>Estructura clara, docentes calificados y proyectos visibles por semana. Aprendizaje creativo, no solo pasar el rato.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon coral">💛</div>
+        <h3>Cuidado emocional</h3>
+        <p>Acompañamos con escucha, límites claros y un ambiente seguro. Arte con bienestar, no caos.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon gold">🏆</div>
+        <h3>Resultados visibles</h3>
+        <p>Cada semana cierra con una muestra, mini-galería o ensamble. Proceso + producto, siempre.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon teal">🤸</div>
+        <h3>Flexibilidad total</h3>
+        <p>Si hay festivo, ajustamos los días sin perder contenidos. Si viajan una semana, no pasa nada — las demás siguen igual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCIPLINES -->
+<section id="disciplinas">
+  <div class="section-inner">
+    <div class="eyebrow">Qué exploramos</div>
+    <h2>Tres mundos, <em>un solo espacio</em></h2>
+    <p class="section-lead">Cada día integramos las tres disciplinas en mini-proyectos temáticos con proceso y resultado visible.</p>
+    <div class="disciplines-grid">
+      <div class="disc-card">
+        <img src="https://static.wixstatic.com/media/85afce_eeda9f7daeb94b2c88e8213c3bfb7225~mv2.jpg/v1/fill/w_361,h_310,q_90,enc_avif,quality_auto/85afce_eeda9f7daeb94b2c88e8213c3bfb7225~mv2.jpg" alt="Exploración corporal">
+        <div class="disc-overlay">
+          <div class="disc-num">01</div>
+          <h3>Exploración Corporal</h3>
+          <p>Movimiento, expresión, ritmo e imaginación. Danza y teatro integrados.</p>
+          <div class="disc-tags">
+            <span class="disc-tag">Técnica</span>
+            <span class="disc-tag">Improvisación</span>
+            <span class="disc-tag">Escena</span>
+          </div>
+        </div>
+      </div>
+      <div class="disc-card">
+        <img src="https://static.wixstatic.com/media/85afce_89a140809af24c288e42753c9d8bf363~mv2.jpeg/v1/fill/w_674,h_422,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Taller%20de%20M%C3%BAsica%201.jpeg" alt="Exploración musical">
+        <div class="disc-overlay">
+          <div class="disc-num">02</div>
+          <h3>Exploración Musical</h3>
+          <p>Canto, percusión, xilófono, piano, ukelele y ensamble. Un instrumento diferente cada día.</p>
+          <div class="disc-tags">
+            <span class="disc-tag">Ritmo</span>
+            <span class="disc-tag">Melodía</span>
+            <span class="disc-tag">Ensamble</span>
+          </div>
+        </div>
+      </div>
+      <div class="disc-card">
+        <img src="https://static.wixstatic.com/media/85afce_266e46e269ca4714aa95bccb67976e69~mv2.jpg/v1/fill/w_674,h_422,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_20241126_100541.jpg" alt="Artes plásticas">
+        <div class="disc-overlay">
+          <div class="disc-num">03</div>
+          <h3>Artes Plásticas</h3>
+          <p>Dibujo, pintura, collage y modelado. Cada semana una creación visual diferente.</p>
+          <div class="disc-tags">
+            <span class="disc-tag">Color</span>
+            <span class="disc-tag">Forma</span>
+            <span class="disc-tag">Composición</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAS -->
+<section id="fechas" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="dates-section">
+      <div class="dates-split">
+        <div class="dates-left">
+          <div class="eyebrow">Temporada 2026</div>
+          <div class="big-date">Junio y julio<br><em>2026</em></div>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.75rem; max-width:340px;">
+            Vacaciones artísticas presenciales en Musicala. Puedes elegir las semanas que mejor se ajusten a tu familia.
+          </p>
+          <a href="https://wa.me/573193529475" class="btn btn-primary" style="margin-top:1.5rem;" target="_blank">
+            💬 Preguntar por cupos
+          </a>
+        </div>
+        <div class="dates-right">
+          <h3>¿Cuántas semanas?</h3>
+          <p>Puedes inscribirte para una, varias o todas. Cada semana funciona como ciclo completo.</p>
+          <div class="week-pill">
+            <span class="week-num">9</span>
+            <div class="week-info">
+              <strong>semanas disponibles</strong>
+              Junio · Julio 2026
+            </div>
+          </div>
+          <div class="week-pill">
+            <span class="week-num">4h</span>
+            <div class="week-info">
+              <strong>por día</strong>
+              Arte, cuerpo, música, lúdica
+            </div>
+          </div>
+          <div class="week-pill">
+            <span class="week-num">3</span>
+            <div class="week-info">
+              <strong>disciplinas artísticas</strong>
+              Integradas cada día
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUCTURA DIARIA VISUAL -->
+<section style="padding-top:0;">
+  <div class="section-inner">
+    <div style="background:var(--white); border:1.5px solid var(--border); border-radius:var(--r); padding:2rem;">
+      <div class="eyebrow">Distribución diaria</div>
+      <h3 style="font-family:'Outfit',serif; font-size:1.6rem; font-weight:700; color:var(--deep); margin-bottom:1.25rem;">
+        4 horas con sentido
+      </h3>
+      <div class="daily-blocks">
+        <div class="db">
+          <span class="db-time">1h</span>
+          <div class="db-bar db-arts">🎨 Manualidades – pintura, dibujo y modelado</div>
+        </div>
+        <div class="db">
+          <span class="db-time">1h</span>
+          <div class="db-bar db-corp">💃 Baile, teatro y expresión corporal</div>
+        </div>
+        <div class="db">
+          <span class="db-time">1h</span>
+          <div class="db-bar db-music">🎵 Música – juego, ritmo, cuerpo, voz e instrumentos</div>
+        </div>
+        <div class="db">
+          <span class="db-time">30m</span>
+          <div class="db-bar db-onces">🍎 Receso / snack</div>
+        </div>
+        <div class="db">
+          <span class="db-time">30m</span>
+          <div class="db-bar db-ludico">🎲 Talleres Lúdicos y actividades grupales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDOS ACCORDION -->
+<section>
+  <div class="section-inner">
+    <div class="eyebrow">Contenidos en detalle</div>
+    <h2>¿Qué aprenden <em>exactamente</em>?</h2>
+    <p class="section-lead">Haz clic en cada área para ver los componentes técnico, teórico y de obras.</p>
+
+    <div style="background:var(--white); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); margin-top:1rem;">
+
+      <!-- CORPORAL -->
+      <div class="accordion-group">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <div class="acc-icon teal">💃</div>
+            <div>
+              <div class="acc-title">Exploración Corporal — Danza + Teatro</div>
+              <div class="acc-sub">Movimiento, expresión escénica, ritmo e improvisación</div>
+            </div>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p class="acc-summary">Integramos movimiento, expresión, ritmo, imaginación y juego dramático, adaptado a la edad. Tres componentes: <strong>técnico</strong>, <strong>teórico (vivencial)</strong> y <strong>obras</strong>.</p>
+          <div class="acc-content-grid">
+            <div class="acc-col">
+              <h4>🩰 Danza – Técnica Corporal</h4>
+              <ul class="acc-list">
+                <li>Calentamientos y movilidad articular segura</li>
+                <li>Patrones de movimiento: marchas, diagonales</li>
+                <li>Motricidad gruesa: saltos, giros, coordinación</li>
+                <li>Estilos: latinos, urbanos, folclor colombiano</li>
+                <li>Ritmo corporal: palmadas, zapateos, pulso</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎭 Teatro – Técnica Escénica</h4>
+              <ul class="acc-list">
+                <li>Uso del espacio, niveles (alto–medio–bajo)</li>
+                <li>Proyección corporal sin forzar la voz</li>
+                <li>Emociones básicas desde el juego</li>
+                <li>Coordinación grupal: entradas y salidas</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎬 Obras y cierres</h4>
+              <ul class="acc-list">
+                <li>Mini-coreografías de 8/16/32 tiempos</li>
+                <li>Micro-escenas con inicio y final simple</li>
+                <li>Dúos y tríos para trabajo en equipo</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-highlight">
+            <strong>En palabras sencillas:</strong> fortalecemos cuerpo, creatividad y confianza. Se mueven, inventan y actúan desde el juego, construyendo bases reales.
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSICAL -->
+      <div class="accordion-group">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <div class="acc-icon gold">🎵</div>
+            <div>
+              <div class="acc-title">Exploración Musical</div>
+              <div class="acc-sub">Un instrumento diferente cada día: canto, percusión, xilófono, ukelele, ensamble</div>
+            </div>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p class="acc-summary">Estructura progresiva durante la semana integrando <strong>técnica</strong>, <strong>teoría (desde el juego)</strong> y <strong>obras</strong>.</p>
+          <div class="acc-content-grid">
+            <div class="acc-col">
+              <h4>🎤 Día 1 – Canto</h4>
+              <ul class="acc-list">
+                <li>Respiración y proyección vocal</li>
+                <li>Gimnasia vocal: sirenas, escalas cortas</li>
+                <li>Coordinación voz–ritmo</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🥁 Día 2 – Percusión & Orff</h4>
+              <ul class="acc-list">
+                <li>Gimnasia dactilar y coordinación</li>
+                <li>Patrones rítmicos básicos y combinados</li>
+                <li>Acompañamientos con percusión</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎹 Día 3 – Xilófono y Piano</h4>
+              <ul class="acc-list">
+                <li>Escalas y patrones repetitivos</li>
+                <li>Melodías con 3, 4 y 5 notas</li>
+                <li>Coordinación mano-dedo</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎸 Día 4 – Ukelele</h4>
+              <ul class="acc-list">
+                <li>Postura y control de mano/muñeca</li>
+                <li>Acordes base (C, Am, F) y cambios</li>
+                <li>Patrones de rasgueo iniciales</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎼 Día 5 – Ensamble</h4>
+              <ul class="acc-list">
+                <li>Integración de toda la semana</li>
+                <li>Coordinación grupal: entradas y finales</li>
+                <li>Escucha activa entre compañeros</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-highlight">
+            <strong>En palabras sencillas:</strong> aprenden música jugando, con bases reales: coordinación, ritmo, melodía, lectura simple y ensamble.
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTES -->
+      <div class="accordion-group">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <div class="acc-icon coral">🎨</div>
+            <div>
+              <div class="acc-title">Artes Plásticas</div>
+              <div class="acc-sub">Dibujo, pintura, collage, modelado — una creación diferente cada semana</div>
+            </div>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="accordion-body">
+          <p class="acc-summary">Exploramos materiales, técnicas y procesos creativos de forma progresiva. Cada semana se construye una creación final.</p>
+          <div class="acc-content-grid">
+            <div class="acc-col">
+              <h4>✏️ Técnicas trabajadas</h4>
+              <ul class="acc-list">
+                <li>Dibujo: trazos, presión, proporciones</li>
+                <li>Pintura / acuarelas: mezclas y degradados</li>
+                <li>Modelado: rollos, esferas, volumen</li>
+                <li>Collage y reciclaje creativo</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🎓 Teoría (sencilla y contextual)</h4>
+              <ul class="acc-list">
+                <li>Color: primarios, secundarios, armonías</li>
+                <li>Elementos del arte: línea, forma, textura</li>
+                <li>Apreciación: observar y hablar sobre lo que se crea</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>🖼️ Proyectos de cierre</h4>
+              <ul class="acc-list">
+                <li>Mini-galerías de dibujos y pinturas</li>
+                <li>Personajes dibujados o modelados</li>
+                <li>Máscaras y accesorios para teatro/danza</li>
+                <li>Esculturas y técnicas mixtas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-highlight">
+            <strong>En palabras sencillas:</strong> exploramos dibujo, pintura, collage y modelado. Se aprende haciendo y se valora el proceso, no solo el resultado bonito.
+          </div>
+        </div>
+      </div>
+
+      <!-- LÚDICOS -->
+      <div class="accordion-group">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <div class="acc-icon deep">🎲</div>
+            <div>
+              <div class="acc-title">Talleres Lúdicos y Proyectos Semanales</div>
+              <div class="acc-sub">Convivencia, juego cooperativo y mini-proyectos temáticos</div>
+            </div>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="acc-content-grid">
+            <div class="acc-col">
+              <h4>🤝 Talleres lúdicos</h4>
+              <ul class="acc-list">
+                <li>Juegos cooperativos y retos creativos</li>
+                <li>Dinámicas teatrales y musicales de equipo</li>
+                <li>Pausas activas, bienestar y socialización guiada</li>
+              </ul>
+            </div>
+            <div class="acc-col">
+              <h4>📌 Proyecto semanal temático</h4>
+              <ul class="acc-list">
+                <li>Una historia inventada por el grupo</li>
+                <li>Una escena o micro-obra</li>
+                <li>Una coreografía o secuencia corporal</li>
+                <li>Una pieza musical (canción / ensamble)</li>
+                <li>Una creación visual (galería / obra)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section id="cronograma" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="eyebrow">Semana a semana</div>
+    <h2>4 semanas de <em>ciclo completo</em></h2>
+    <p class="section-lead">Cada semana tiene un enfoque temático y cierra con un resultado visible.</p>
+
+    <div class="schedule-tabs">
+      <button class="tab-btn active" onclick="showTab('semana1', this)">Semana 1</button>
+      <button class="tab-btn" onclick="showTab('semana2', this)">Semana 2</button>
+      <button class="tab-btn" onclick="showTab('semana3', this)">Semana 3</button>
+      <button class="tab-btn" onclick="showTab('semana4', this)">Semana 4</button>
+    </div>
+
+    <!-- SEMANA 1 -->
+    <div class="tab-content active" id="semana1">
+      <div class="week-header">
+        <div>
+          <h3>Semana 1 — Exploración Creativa</h3>
+          <p>Adaptación al grupo, descubrimiento de materiales, juegos de ritmo, color y movimiento</p>
+        </div>
+        <span class="week-badge">Cierre: Muestra interna</span>
+      </div>
+      <div class="days-row">
+        <div class="day-col">
+          <div class="day-num">Día 1</div>
+          <div class="day-focus">Canto</div>
+          <div class="day-item arts">🎨 Artes plásticas · 1h</div>
+          <div class="day-item corp">💃 Exploración Corporal · 1h</div>
+          <div class="day-item music">🎤 Música – Canto · 1h</div>
+          <div class="day-item rest">🍎 Receso / snack · 30m</div>
+          <div class="day-item rest">🎲 Lúdico · 30m</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 2</div>
+          <div class="day-focus">Percusión</div>
+          <div class="day-item arts">🎨 Artes plásticas · 1h</div>
+          <div class="day-item corp">💃 Exploración Corporal · 1h</div>
+          <div class="day-item music">🥁 Música – Percusión · 1h</div>
+          <div class="day-item rest">🍎 Receso / snack · 30m</div>
+          <div class="day-item rest">🎲 Lúdico · 30m</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 3</div>
+          <div class="day-focus">Xilófono</div>
+          <div class="day-item arts">🎨 Artes plásticas · 1h</div>
+          <div class="day-item corp">💃 Exploración Corporal · 1h</div>
+          <div class="day-item music">🎹 Música – Xilófono · 1h</div>
+          <div class="day-item rest">🍎 Receso / snack · 30m</div>
+          <div class="day-item rest">🎲 Lúdico · 30m</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 4</div>
+          <div class="day-focus">Ukelele</div>
+          <div class="day-item arts">🎨 Artes plásticas · 1h</div>
+          <div class="day-item corp">💃 Exploración Corporal · 1h</div>
+          <div class="day-item music">🎸 Música – Ukelele · 1h</div>
+          <div class="day-item rest">🍎 Receso / snack · 30m</div>
+          <div class="day-item rest">🎲 Lúdico · 30m</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 5</div>
+          <div class="day-focus">Ensamble</div>
+          <div class="day-item arts">🎨 Artes plásticas · 1h</div>
+          <div class="day-item corp">💃 Exploración Corporal · 1h</div>
+          <div class="day-item music">🎼 Música – Ensamble · 1h</div>
+          <div class="day-item rest">🍎 Receso / snack · 30m</div>
+          <div class="day-item rest">🎲 Lúdico · 30m</div>
+        </div>
+      </div>
+      <div class="week-result">
+        <span style="font-size:1.4rem;">✨</span>
+        <div>
+          <strong>Cierre de semana:</strong>
+          Mini muestra interna — exposición de obras + escena corta + canción sencilla (según grupo)
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 2 -->
+    <div class="tab-content" id="semana2">
+      <div class="week-header">
+        <div>
+          <h3>Semana 2 — Cuerpo y Movimiento</h3>
+          <p>Mayor exploración expresiva: color, textura, secuencias corporales y danza</p>
+        </div>
+        <span class="week-badge">Cierre: Coreografía + Obra</span>
+      </div>
+      <div class="days-row">
+        <div class="day-col">
+          <div class="day-num">Día 1</div>
+          <div class="day-focus">Canto</div>
+          <div class="day-item arts">🎨 Artes · técnicas mixtas</div>
+          <div class="day-item corp">💃 Danza: secuencias latinas</div>
+          <div class="day-item music">🎤 Afinación y proyección</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 2</div>
+          <div class="day-focus">Percusión</div>
+          <div class="day-item arts">🎨 Collage y modelado</div>
+          <div class="day-item corp">💃 Disociaciones y niveles</div>
+          <div class="day-item music">🥁 Patrones con ensamble</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 3</div>
+          <div class="day-focus">Xilófono</div>
+          <div class="day-item arts">🎨 Personajes y accesorios</div>
+          <div class="day-item corp">💃 Musicalidad del cuerpo</div>
+          <div class="day-item music">🎹 Melodías de 4 notas</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 4</div>
+          <div class="day-focus">Ukelele</div>
+          <div class="day-item arts">🎨 Máscaras para escena</div>
+          <div class="day-item corp">💃 Improvisación guiada</div>
+          <div class="day-item music">🎸 Rasgueos y acompañamiento</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 5</div>
+          <div class="day-focus">Ensamble</div>
+          <div class="day-item arts">🎨 Integración visual</div>
+          <div class="day-item corp">💃 Presentación corporal</div>
+          <div class="day-item music">🎼 Integración semanal</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+      </div>
+      <div class="week-result">
+        <span style="font-size:1.4rem;">🎭</span>
+        <div>
+          <strong>Cierre de semana:</strong>
+          Coreografía corta + micro-escena + pieza musical con 4 notas (según grupo)
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 3 -->
+    <div class="tab-content" id="semana3">
+      <div class="week-header">
+        <div>
+          <h3>Semana 3 — Música y Sonido</h3>
+          <p>Integración de color, forma y sonido — escenas musicalizadas</p>
+        </div>
+        <span class="week-badge">Cierre: Ensamble + Escena</span>
+      </div>
+      <div class="days-row">
+        <div class="day-col">
+          <div class="day-num">Día 1</div>
+          <div class="day-focus">Canto</div>
+          <div class="day-item arts">🎨 Técnicas mixtas: pint. + collage</div>
+          <div class="day-item corp">💃 Ritmo corporal proyectado</div>
+          <div class="day-item music">🎤 Canto con intención y pulso</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 2</div>
+          <div class="day-focus">Percusión</div>
+          <div class="day-item arts">🎨 Piezas visuales sonoras</div>
+          <div class="day-item corp">💃 Secuencias coordinadas</div>
+          <div class="day-item music">🥁 Ritmo, ensamble y escucha</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 3</div>
+          <div class="day-focus">Xilófono</div>
+          <div class="day-item arts">🎨 Fondos y carteles temáticos</div>
+          <div class="day-item corp">💃 Acción–reacción en escena</div>
+          <div class="day-item music">🎹 Melodías de 5 notas</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 4</div>
+          <div class="day-focus">Ukelele</div>
+          <div class="day-item arts">🎨 Volumen y armonías de color</div>
+          <div class="day-item corp">💃 Personaje + movimiento</div>
+          <div class="day-item music">🎸 Acordes base + rasgueos</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 5</div>
+          <div class="day-focus">Ensamble</div>
+          <div class="day-item arts">🎨 Intervención visual final</div>
+          <div class="day-item corp">💃 Escena musicalizada</div>
+          <div class="day-item music">🎼 Unión final semanal</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+      </div>
+      <div class="week-result">
+        <span style="font-size:1.4rem;">🎶</span>
+        <div>
+          <strong>Cierre de semana:</strong>
+          Ensamble sencillo + escena musicalizada + intervención visual
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 4 -->
+    <div class="tab-content" id="semana4">
+      <div class="week-header">
+        <div>
+          <h3>Semana 4 — Arte Integrado</h3>
+          <p>Proyecto final que mezcla música, danza/teatro y artes plásticas — performance completo</p>
+        </div>
+        <span class="week-badge" style="background:var(--gold); color:var(--deep);">Cierre: Performance Final</span>
+      </div>
+      <div class="days-row">
+        <div class="day-col">
+          <div class="day-num">Día 1</div>
+          <div class="day-focus">Canto</div>
+          <div class="day-item arts">🎨 Ilustración y escenografía</div>
+          <div class="day-item corp">💃 Entradas y salidas escénicas</div>
+          <div class="day-item music">🎤 Canto y montaje</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 2</div>
+          <div class="day-focus">Percusión</div>
+          <div class="day-item arts">🎨 Diseño del espacio escénico</div>
+          <div class="day-item corp">💃 Continuidad y cohesión grupal</div>
+          <div class="day-item music">🥁 Ensamble rítmico</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 3</div>
+          <div class="day-focus">Xilófono</div>
+          <div class="day-item arts">🎨 Elementos visuales para performance</div>
+          <div class="day-item corp">💃 Montaje corporal y presencia</div>
+          <div class="day-item music">🎹 Melodía para performance</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 4</div>
+          <div class="day-focus">Ukelele</div>
+          <div class="day-item arts">🎨 Detalles de escenografía</div>
+          <div class="day-item corp">💃 Ensayo general de la mini-obra</div>
+          <div class="day-item music">🎸 Acompañamiento final</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+        <div class="day-col">
+          <div class="day-num">Día 5</div>
+          <div class="day-focus">Ensamble</div>
+          <div class="day-item arts">🎨 Galería final</div>
+          <div class="day-item corp">💃 Performance integrado</div>
+          <div class="day-item music">🎼 Integración final</div>
+          <div class="day-item rest">🍎 Receso / snack · 🎲 Lúdico</div>
+        </div>
+      </div>
+      <div class="week-result" style="background: var(--gold); color: var(--deep);">
+        <span style="font-size:1.4rem;">🌟</span>
+        <div>
+          <strong>Performance final integrado:</strong>
+          Música + escena + visual, adaptado a la edad del grupo. ¡El gran cierre!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILIAS -->
+<section id="familias">
+  <div class="section-inner">
+    <div class="eyebrow">Para las familias</div>
+    <h2>¿Es para <em>mi hijo/a</em>?</h2>
+    <p class="section-lead">Si tu hijo/a ama crear, moverse, cantar, dibujar o explorar — este es su lugar.</p>
+
+    <div class="fam-grid">
+      <div class="fam-card">
+        <div class="icon">🛡️</div>
+        <h4>Espacio seguro y amoroso</h4>
+        <p>Cuidado emocional, escucha y límites claros. Arte con bienestar, sin caos.</p>
+      </div>
+      <div class="fam-card">
+        <div class="icon">📐</div>
+        <h4>Aprendizaje real, sin rigidez</h4>
+        <p>Estructura pedagógica clara, adaptada a cada grupo y a los intereses que emergen.</p>
+      </div>
+      <div class="fam-card">
+        <div class="icon">🎨</div>
+        <h4>Ambiente creativo y estético</h4>
+        <p>Materiales, instrumentos y un espacio pensado para crear en serio.</p>
+      </div>
+      <div class="fam-card">
+        <div class="icon">🏅</div>
+        <h4>Procesos y resultados visibles</h4>
+        <p>Muestra, galería o ensamble cada semana. Participar no es obligatorio si el niño prefiere no presentarse.</p>
+      </div>
+      <div class="fam-card">
+        <div class="icon">📅</div>
+        <h4>Flexibilidad por semanas</h4>
+        <p>Una semana, dos o varias. Nadie pierde el hilo. Se puede entrar en cualquier punto.</p>
+      </div>
+      <div class="fam-card">
+        <div class="icon">🌱</div>
+        <h4>¿Qué se llevan?</h4>
+        <p>Seguridad para expresarse, habilidades reales (ritmo, coordinación, creatividad) y amigos nuevos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTAS -->
+<section style="padding-top:0;">
+  <div class="section-inner">
+    <div class="notes-grid">
+      <div class="note-pill"><span>📌</span> <span>La estructura se ajusta según edades y características del grupo.</span></div>
+      <div class="note-pill"><span>🗓️</span> <span>Si hay festivo, reorganizamos días sin perder contenidos.</span></div>
+      <div class="note-pill"><span>🔄</span> <span>Cada semana es un ciclo completo: se puede entrar en cualquier semana.</span></div>
+      <div class="note-pill"><span>🎭</span> <span>Los cierres no son obligatorios — participar es voluntario.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEST -->
+<section style="padding-top:0;">
+  <div class="section-inner">
+    <div class="fest-card">
+      <span class="fest-badge">Opcional</span>
+      <div>
+        <h3>🎉 Musicala Fest</h3>
+        <p>Quienes lo deseen pueden unirse al Musicala Fest, donde se comparte una de las creaciones de los vacacionales. Participación voluntaria, adaptada al tiempo de cada familia.</p>
+      </div>
+      <a href="https://wa.me/573193529475" class="btn btn-primary ml-auto" target="_blank" style="white-space:nowrap;">
+        💬 Más info
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="inscripciones">
+  <div class="section-inner">
+    <div class="cta-section" style="padding: clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+      <div class="eyebrow">Inscripciones abiertas</div>
+      <h2>¡Asegura tu <em>cupo</em>!</h2>
+      <p>Junio y julio de 2026. Cupos limitados por grupo. Escríbenos por WhatsApp y te guiamos en el proceso.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/573193529475" class="btn btn-white" target="_blank">
+          💬 WhatsApp — Inscribirme
+        </a>
+        <a href="#presentacion" class="btn btn-ghost">
+          ← Ver presentación
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Musicala · Talleres Vacacionales 2025 · <a href="https://wa.me/573193529475" style="color:var(--coral); text-decoration:none;">+57 319 352 9475</a></p>
+</footer>
+
+<script>
+  // Accordion
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.accordion-trigger').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  // Tabs
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Animate on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.why-card, .fam-card, .disc-card, .art-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
