@@ -1,377 +1,89 @@
-// app.js (mejorado)
-// 1) Navegación por cards (secciones principales) + hash + localStorage
-// 2) Tabs por semanas en Cronograma + localStorage
-// 3) Acordeones por actividad (accesibles, con maxHeight estable)
-// 4) Accesibilidad: teclado, ARIA, focus management
-// 5) Robusto: ignora clicks inválidos y evita errores si faltan nodos
+const THEMES=[
+{title:"Exploración Creativa",focus:"Adaptación al grupo, descubrimiento de materiales y juegos de ritmo, color y movimiento.",arts:"Trazos, mezclas simples, recorte seguro, color y mini-galería.",body:"Movilidad, diagonales, emociones, ritmo, escucha escénica y micro-escenas.",music:"Gimnasia vocal, patrones rítmicos y melodías de 3 notas.",closing:"Mini muestra interna: exposición + escena corta + canción sencilla."},
+{title:"Cuerpo y Movimiento",focus:"Mayor exploración expresiva: color, textura, secuencias corporales y danza.",arts:"Acuarelas, collage, modelado, contrastes y personajes.",body:"Secuencias adaptadas, disociaciones, musicalidad, niveles e improvisación.",music:"Patrones Orff, melodías de 4 notas y reconocimiento de notas.",closing:"Coreografía corta + escena + pieza musical."},
+{title:"Música y Sonido",focus:"Integración de color, forma y sonido.",arts:"Técnicas mixtas, modelado y obras visuales que acompañan música.",body:"Ritmo corporal, coordinación, personaje y escenas musicalizadas.",music:"Melodías de 5 notas, piano/xilófono, ukelele y lectura rítmica.",closing:"Ensamble + escena musicalizada + intervención visual."},
+{title:"Arte Integrado",focus:"Proyecto que mezcla música, danza, teatro y artes plásticas.",arts:"Ilustración, escenografía, construcción visual y composición.",body:"Montaje corporal, continuidad escénica y cohesión grupal.",music:"Integración vocal, percusión, teclado, ukelele y ensamble.",closing:"Performance o proyecto final integrado."}
+];
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ---------------------------
-  // Helpers
-  // ---------------------------
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+function makeWeeks(n,labelPrefix="Semana"){
+ return Array.from({length:n},(_,i)=>({...THEMES[i%THEMES.length],label:`${labelPrefix} ${i+1}`}));
+}
 
-  const STORAGE = {
-    section: 'musicala_brochure_active_section',
-    week: 'musicala_brochure_active_week'
-  };
+const SEASONS=[
+{
+ id:"receso-oct-2026",
+ name:"Semana de Receso · Octubre 2026",
+ dates:"5 al 9 de octubre de 2026",
+ schedule:"9:00 a. m. – 1:00 p. m.",
+ plan:"20 horas",
+ weeks:[{...THEMES[3],label:"5 al 9 de octubre",title:"Semana de Receso · Arte Integrado"}],
+ prices:[{hours:"20 horas",title:"Semana completa",value:"$392.000",text:"Cinco jornadas de 4 horas.",featured:true}],
+ intro:"Una semana completa en la que las cuatro áreas se integran en un mismo ciclo."
+},
+{
+ id:"jun-jul-2026",
+ name:"Junio · Julio 2026",
+ dates:"Junio y julio de 2026",
+ schedule:"9:00 a. m. – 1:00 p. m.",
+ plan:"1 a 9 semanas",
+ weeks:makeWeeks(9),
+ prices:[
+  {hours:"16 horas",title:"Semana especial",value:"$314.000",text:"Para semanas con festivo o calendario reducido."},
+  {hours:"20 horas",title:"1 semana completa",value:"$392.000",text:"Cinco jornadas de 4 horas.",featured:true},
+  {hours:"40 horas",title:"2 semanas",value:"Consultar",text:"Valor según temporada."},
+  {hours:"60 horas",title:"3 semanas",value:"Consultar",text:"Valor según temporada."},
+  {hours:"80 horas",title:"4 semanas",value:"Consultar",text:"Valor según temporada."}
+ ],
+ intro:"Temporada extendida. Las semanas se organizan como ciclos independientes y la ruta temática rota para que cada semana tenga cierre propio."
+}
+];
 
-  const safeId = (id) => (typeof id === 'string' ? id.trim().replace(/^#/, '') : '');
-  const prefersReducedMotion = () =>
-    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+const select=$("#seasonSelect");
+let current=null;
 
-  const smoothScrollToEl = (el, offset = 16) => {
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({
-      top,
-      behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-    });
-  };
+function renderWeek(i){
+ const w=current.weeks[i];
+ $("#weekPanel").innerHTML=`<div class="week-card">
+  <div class="week-head"><span>${esc(w.label)}</span><h3>${esc(w.title)}</h3><p>${esc(w.focus)}</p></div>
+  <div class="week-content"><div class="week-focus">
+   <article><h4>🎨 Artes</h4><p>${esc(w.arts)}</p></article>
+   <article><h4>🎭 Danza + Teatro</h4><p>${esc(w.body)}</p></article>
+   <article><h4>🎵 Música</h4><p>${esc(w.music)}</p></article>
+   <article><h4>✨ Cierre</h4><p>${esc(w.closing)}</p></article>
+  </div></div></div>`;
+ document.querySelectorAll(".week-tab").forEach((b,j)=>b.classList.toggle("active",j===i));
+}
 
-  const setHash = (id) => {
-    const clean = safeId(id);
-    if (!clean) return;
-    // replaceState evita que el back button se vuelva un infierno
-    history.replaceState(null, '', `#${clean}`);
-  };
+function renderSeason(s){
+ current=s;
+ $("#seasonDates").textContent=s.dates;
+ $("#seasonCount").textContent=`${s.weeks.length} ${s.weeks.length===1?"semana":"semanas"}`;
+ $("#seasonSchedule").textContent=s.schedule;
+ $("#seasonPlan").textContent=s.plan;
+ $("#weeksLead").textContent=s.intro;
+ $("#weeksHeading").textContent=s.weeks.length===1?"Una semana, un ciclo completo":`${s.weeks.length} semanas disponibles`;
+ $("#priceLabel").textContent=s.name.toUpperCase();
+ $("#priceIntro").textContent=`Planes disponibles para ${s.name}.`;
+ $("#heroMeta").innerHTML=`<span>📅 ${esc(s.dates)}</span><span>🕘 ${esc(s.schedule)}</span><span>🧒 4 a 15 años</span><span>📍 Bogotá</span>`;
 
-  // ---------------------------
-  // 1) Secciones + Cards menu
-  // ---------------------------
-  const cards = $$('.cards-menu__item');
-  const sections = $$('.content-section');
+ const tabs=$("#weekTabs");tabs.innerHTML="";
+ s.weeks.forEach((w,i)=>{
+  const b=document.createElement("button");b.className="week-tab";b.textContent=s.weeks.length===1?"Semana de Receso":`Semana ${i+1}`;b.onclick=()=>renderWeek(i);tabs.appendChild(b);
+ });
+ renderWeek(0);
 
-  // Solo consideramos "cards" del menú principal (los anchors también tienen esa clase en tu HTML)
-  // Filtramos: si es <button> o tiene data-target, lo tratamos como card del menú.
-  const navCards = cards.filter((el) => el.hasAttribute('data-target'));
+ const pg=$("#pricesGrid");pg.innerHTML="";
+ s.prices.forEach(p=>{
+  const a=document.createElement("article");a.className="price-card"+(p.featured?" featured":"");
+  a.innerHTML=`${p.featured?'<div class="ribbon">RECOMENDADO ✨</div>':""}<span class="hours">${esc(p.hours)}</span><h3>${esc(p.title)}</h3><strong>${esc(p.value)}</strong><p>${esc(p.text)}</p><a class="btn ${p.featured?"primary":"secondary"}" href="https://musibot.imusicala.com/wa" target="_blank" rel="noopener">${p.value==="Consultar"?"Consultar":"Reservar"}</a>`;
+  pg.appendChild(a);
+ });
+ localStorage.setItem("vacacionalSeason",s.id);
+}
 
-  const sectionById = (id) => sections.find((s) => s.id === id);
-
-  const setActiveCard = (targetId) => {
-    navCards.forEach((card) => {
-      const cardTarget = safeId(card.getAttribute('data-target'));
-      card.classList.toggle('is-active', cardTarget === targetId);
-      // ARIA para accesibilidad
-      card.setAttribute('aria-current', cardTarget === targetId ? 'page' : 'false');
-    });
-  };
-
-  const setActiveSection = (targetId, opts = {}) => {
-    const { scroll = true, updateHash = true, persist = true, focus = false } = opts;
-
-    const id = safeId(targetId);
-    if (!id) return;
-
-    const section = sectionById(id);
-    if (!section) return;
-
-    sections.forEach((s) => s.classList.toggle('is-active', s.id === id));
-    setActiveCard(id);
-
-    // Persistencia
-    if (persist) {
-      try { localStorage.setItem(STORAGE.section, id); } catch (_) {}
-    }
-
-    // Hash
-    if (updateHash) setHash(id);
-
-    // Scroll hacia el inicio de la sección activa
-    if (scroll) smoothScrollToEl(section, 16);
-
-    // Focus opcional (útil si se navega con teclado)
-    if (focus) {
-      // Enfoca el primer heading si existe
-      const heading = $('h1, h2, h3', section);
-      if (heading) heading.setAttribute('tabindex', '-1');
-      (heading || section).focus?.();
-      if (heading) heading.removeAttribute('tabindex');
-    }
-
-    // Cuando se cambia de sección, recalcula acordeones visibles
-    refreshOpenAccordions(section);
-  };
-
-  // Click en cards
-  if (navCards.length && sections.length) {
-    navCards.forEach((card) => {
-      // Botón accesible por teclado
-      if (!card.hasAttribute('role')) card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-
-      const activate = () => {
-        const targetId = safeId(card.getAttribute('data-target'));
-        if (targetId) setActiveSection(targetId, { scroll: true, updateHash: true, persist: true });
-      };
-
-      card.addEventListener('click', activate);
-
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          activate();
-        }
-      });
-    });
-  }
-
-  // Navegación por hash (deep link)
-  const goToHashSectionIfValid = () => {
-    const hashId = safeId(window.location.hash);
-    if (hashId && sectionById(hashId)) {
-      setActiveSection(hashId, { scroll: true, updateHash: true, persist: true });
-      return true;
-    }
-    return false;
-  };
-
-  // Carga inicial: 1) hash 2) localStorage 3) card marcada 4) primera sección
-  (() => {
-    if (goToHashSectionIfValid()) return;
-
-    // localStorage
-    let saved = '';
-    try { saved = safeId(localStorage.getItem(STORAGE.section)); } catch (_) {}
-    if (saved && sectionById(saved)) {
-      setActiveSection(saved, { scroll: false, updateHash: true, persist: false });
-      return;
-    }
-
-    // card activa (HTML)
-    const initialCard = $('.cards-menu__item.is-active[data-target]');
-    const initialTarget = initialCard ? safeId(initialCard.getAttribute('data-target')) : '';
-    if (initialTarget && sectionById(initialTarget)) {
-      setActiveSection(initialTarget, { scroll: false, updateHash: true, persist: true });
-      return;
-    }
-
-    // fallback: primera sección existente
-    const first = sections[0];
-    if (first) setActiveSection(first.id, { scroll: false, updateHash: true, persist: true });
-  })();
-
-  // Si cambia el hash manualmente
-  window.addEventListener('hashchange', () => {
-    goToHashSectionIfValid();
-  });
-
-  // ---------------------------
-  // 2) Tabs de semanas (Cronograma)
-  // ---------------------------
-  const weekTabs = $$('.schedule-tab');
-  const weekPanels = $$('.week-panel');
-
-  const activateWeek = (week, opts = {}) => {
-    const { persist = true } = opts;
-    const w = safeId(week); // por si llega "#1"
-    if (!w) return;
-
-    weekTabs.forEach((tab) => {
-      const tWeek = safeId(tab.getAttribute('data-week'));
-      const isActive = tWeek === w;
-      tab.classList.toggle('is-active', isActive);
-      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      tab.setAttribute('tabindex', isActive ? '0' : '-1');
-    });
-
-    weekPanels.forEach((panel) => {
-      const pWeek = safeId(panel.getAttribute('data-week-panel'));
-      const isActive = pWeek === w;
-      panel.classList.toggle('is-active', isActive);
-      panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-
-      // Ajuste de acordeones abiertos dentro del panel activo
-      if (isActive) refreshOpenAccordions(panel);
-    });
-
-    if (persist) {
-      try { localStorage.setItem(STORAGE.week, w); } catch (_) {}
-    }
-  };
-
-  if (weekTabs.length && weekPanels.length) {
-    // Set ARIA roles
-    const tabsWrap = $('.schedule-tabs');
-    if (tabsWrap) tabsWrap.setAttribute('role', 'tablist');
-
-    weekTabs.forEach((tab, idx) => {
-      tab.setAttribute('role', 'tab');
-      tab.setAttribute('aria-selected', 'false');
-      tab.setAttribute('tabindex', idx === 0 ? '0' : '-1');
-
-      const w = safeId(tab.getAttribute('data-week'));
-      const panel = weekPanels.find((p) => safeId(p.getAttribute('data-week-panel')) === w);
-      if (panel) {
-        // Vinculación accesible
-        const tabId = tab.id || `week-tab-${w}`;
-        const panelId = panel.id || `week-panel-${w}`;
-        tab.id = tabId;
-        panel.id = panelId;
-        tab.setAttribute('aria-controls', panelId);
-        panel.setAttribute('role', 'tabpanel');
-        panel.setAttribute('aria-labelledby', tabId);
-      }
-
-      tab.addEventListener('click', () => {
-        const week = safeId(tab.getAttribute('data-week'));
-        if (week) activateWeek(week, { persist: true });
-      });
-
-      // Navegación por flechas en tabs
-      tab.addEventListener('keydown', (e) => {
-        const currentIndex = weekTabs.indexOf(tab);
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          const dir = e.key === 'ArrowRight' ? 1 : -1;
-          let nextIndex = (currentIndex + dir + weekTabs.length) % weekTabs.length;
-          weekTabs[nextIndex].focus();
-        }
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const week = safeId(tab.getAttribute('data-week'));
-          if (week) activateWeek(week, { persist: true });
-        }
-      });
-    });
-
-    // Semana por defecto: saved > 1
-    let savedWeek = '';
-    try { savedWeek = safeId(localStorage.getItem(STORAGE.week)); } catch (_) {}
-    if (savedWeek && weekPanels.some((p) => safeId(p.getAttribute('data-week-panel')) === savedWeek)) {
-      activateWeek(savedWeek, { persist: false });
-    } else {
-      activateWeek('1', { persist: true });
-    }
-  }
-
-  // ---------------------------
-  // 3) Acordeones por actividad
-  // ---------------------------
-  const activityToggles = $$('.activity-toggle');
-
-  // Configura ARIA en acordeones
-  activityToggles.forEach((toggle, idx) => {
-    const content = toggle.nextElementSibling;
-    if (!content) return;
-
-    toggle.setAttribute('role', 'button');
-    toggle.setAttribute('tabindex', '0');
-
-    const toggleId = toggle.id || `acc-toggle-${idx + 1}`;
-    const contentId = content.id || `acc-content-${idx + 1}`;
-    toggle.id = toggleId;
-    content.id = contentId;
-
-    toggle.setAttribute('aria-controls', contentId);
-    toggle.setAttribute('aria-expanded', toggle.classList.contains('is-open') ? 'true' : 'false');
-    content.setAttribute('role', 'region');
-    content.setAttribute('aria-labelledby', toggleId);
-
-    // Estado inicial
-    if (toggle.classList.contains('is-open') || content.classList.contains('is-open')) {
-      openAccordion(toggle, content, false);
-    } else {
-      closeAccordion(toggle, content, false);
-    }
-
-    const onToggle = () => {
-      const isOpen = toggle.classList.contains('is-open');
-      if (isOpen) closeAccordion(toggle, content, true);
-      else openAccordion(toggle, content, true);
-    };
-
-    toggle.addEventListener('click', onToggle);
-    toggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        onToggle();
-      }
-    });
-  });
-
-  function openAccordion(toggle, content, animate = true) {
-    toggle.classList.add('is-open');
-    content.classList.add('is-open');
-    toggle.setAttribute('aria-expanded', 'true');
-
-    // Reset para medir bien
-    content.style.maxHeight = 'none';
-    const target = content.scrollHeight;
-
-    // Para animación suave (si CSS usa transición en max-height)
-    if (!animate || prefersReducedMotion()) {
-      content.style.maxHeight = 'none';
-      return;
-    }
-
-    content.style.maxHeight = '0px';
-    requestAnimationFrame(() => {
-      content.style.maxHeight = `${target}px`;
-    });
-
-    // Una vez termine la transición, dejamos "none" para que responda a contenido dinámico
-    const onEnd = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      content.style.maxHeight = 'none';
-      content.removeEventListener('transitionend', onEnd);
-    };
-    content.addEventListener('transitionend', onEnd);
-  }
-
-  function closeAccordion(toggle, content, animate = true) {
-    toggle.classList.remove('is-open');
-    content.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-
-    if (!animate || prefersReducedMotion()) {
-      content.style.maxHeight = null;
-      return;
-    }
-
-    // Si estaba en none, primero medimos altura real para poder animar hacia 0
-    const currentHeight = content.scrollHeight;
-    content.style.maxHeight = `${currentHeight}px`;
-
-    requestAnimationFrame(() => {
-      content.style.maxHeight = '0px';
-    });
-
-    const onEnd = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      content.style.maxHeight = null;
-      content.removeEventListener('transitionend', onEnd);
-    };
-    content.addEventListener('transitionend', onEnd);
-  }
-
-  // Recalcula maxHeight de acordeones abiertos dentro de un contenedor (panel/sección)
-  function refreshOpenAccordions(container = document) {
-    const openToggles = $$('.activity-toggle.is-open', container);
-    openToggles.forEach((toggle) => {
-      const content = toggle.nextElementSibling;
-      if (!content) return;
-      // Si está abierto, dejamos maxHeight en none para que el contenido se ajuste
-      content.style.maxHeight = 'none';
-    });
-  }
-
-  // ---------------------------
-  // 4) Extras: clicks en anchors internos que apunten a secciones del brochure
-  // ---------------------------
-  // Si alguien hace click en <a href="#cronograma">, activa la sección de una
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest?.('a[href^="#"]');
-    if (!a) return;
-
-    const target = safeId(a.getAttribute('href'));
-    if (!target) return;
-
-    // Si la sección existe, interceptamos para usar nuestro activador
-    if (sectionById(target)) {
-      e.preventDefault();
-      setActiveSection(target, { scroll: true, updateHash: true, persist: true, focus: false });
-    }
-  });
-});
+SEASONS.forEach(s=>{const o=document.createElement("option");o.value=s.id;o.textContent=s.name;select.appendChild(o)});
+const saved=SEASONS.find(s=>s.id===localStorage.getItem("vacacionalSeason"))||SEASONS[0];
+select.value=saved.id;renderSeason(saved);
+select.onchange=()=>renderSeason(SEASONS.find(s=>s.id===select.value)||SEASONS[0]);
